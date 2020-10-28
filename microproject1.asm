@@ -5,12 +5,12 @@ entry Start
 
 section '.data' data readable writeable
 
-; Справка об использовании программы
+; РЎРїСЂР°РІРєР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РїСЂРѕРіСЂР°РјРјС‹
 help db 'This program, which according to the parameters of three segments, decides whether the given segments can be sides of right triangle.', \
         ' ',13,10,0
-; Scanf формат ввода
+; Scanf С„РѕСЂРјР°С‚ РІРІРѕРґР°
 inputFormat db '%lf', 0
-; Prinf формат вывода
+; Prinf С„РѕСЂРјР°С‚ РІС‹РІРѕРґР°
 outtFormat db '%lf',0
 outFormat db '%d',0
 outFormat1 db '%lf %lf %lf %lf %lf %lf', 0
@@ -43,7 +43,7 @@ c2 dq ?
 section '.code' code readable executable
 
 Start:
-  ; Ввод данных
+  ; Р’РІРѕРґ РґР°РЅРЅС‹С…
   invoke printf, help
   invoke printf, input1
   invoke scanf, inputFormat, x1
@@ -59,7 +59,7 @@ Start:
   invoke scanf, inputFormat, y3
 ;  **************************************************
 
-  ; Начало FPU вычислений
+  ; РќР°С‡Р°Р»Рѕ FPU РІС‹С‡РёСЃР»РµРЅРёР№
   finit 
    ;    
    ;            a = sqrt(([x1] - [x2])*([x1] - [x2]) + ([y1] - [y2])*([y1] - [y2]));
@@ -191,7 +191,7 @@ ErrorMessage:
  invoke ExitProcess, 0
 ; **********************************************************************
 exip:
-; Вывод  a, b, c
+; Р’С‹РІРѕРґ  a, b, c
 ;
   mov eax, dword [a2]
   mov ebx, dword [a2 + 4]
@@ -207,7 +207,7 @@ exip:
   invoke ExitProcess, 0
 
 
-; Подключение внешних функций
+; РџРѕРґРєР»СЋС‡РµРЅРёРµ РІРЅРµС€РЅРёС… С„СѓРЅРєС†РёР№
 section '.idata' import data readable
 
   library msvcrt, 'msvcrt.dll', kernel, 'kernel32.dll'
